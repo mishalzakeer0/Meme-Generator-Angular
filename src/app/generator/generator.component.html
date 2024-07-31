@@ -1,0 +1,47 @@
+<div class="app">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card drop-shadow">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="imageUpload">Select an Image</label>
+                                <input type="file" id="imageUpload" class="form-control" accept="image/*" (change)="preview($event)">
+                            </div>
+                            <div class="form-group">
+                                <label for="topText">Top Text</label>
+                                <input type="text" id="topText" class="form-control" name="topText" [(ngModel)]="topText" (keyup)="drawText()">
+                            </div>
+                            <div class="form-group">
+                                <label for="bottomText">Bottom Text</label>
+                                <input type="text" id="bottomText" class="form-control" name="bottomText" [(ngModel)]="bottomText" (keyup)="drawText()">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="textColor">Text Color</label>
+                                        <color-chrome (onChangeComplete)="canvasTextColor($event)" id="textColor"></color-chrome>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="bgColor">Background Color</label>
+                                        <color-chrome (onChangeComplete)="canvasBgColor($event)" id="bgColor"></color-chrome>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add submit button if needed --> 
+                            <button class="w-100 btn btn-outline-primary btn-block mt-5" (click)="downloadImg()">Download</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- Content for the right column can be added here -->
+                <canvas class="drop-shadow" #memeCanvas width="700" height="800" 
+                style="background-color: #f9f9fd;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
