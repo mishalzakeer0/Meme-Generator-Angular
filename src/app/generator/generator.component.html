@@ -4,18 +4,18 @@
             <div class="col-md-6">
                 <div class="card drop-shadow">
                     <div class="card-body">
-                        <form>
+                        <form [formGroup]="memeForm" (ngSubmit)="downloadImg()">
                             <div class="form-group">
                                 <label for="imageUpload">Select an Image</label>
                                 <input type="file" id="imageUpload" class="form-control" accept="image/*" (change)="preview($event)">
                             </div>
                             <div class="form-group">
                                 <label for="topText">Top Text</label>
-                                <input type="text" id="topText" class="form-control" name="topText" [(ngModel)]="topText" (keyup)="drawText()">
+                                <input type="text" id="topText" class="form-control" formControlName="topText" (keyup)="drawText()">
                             </div>
                             <div class="form-group">
                                 <label for="bottomText">Bottom Text</label>
-                                <input type="text" id="bottomText" class="form-control" name="bottomText" [(ngModel)]="bottomText" (keyup)="drawText()">
+                                <input type="text" id="bottomText" class="form-control" formControlName="bottomText" (keyup)="drawText()">
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -31,16 +31,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Add submit button if needed --> 
-                            <button class="w-100 btn btn-outline-primary btn-block mt-5" (click)="downloadImg()">Download</button>
+                            <button type="submit" class="w-100 btn btn-outline-primary btn-block mt-5">Download</button>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <!-- Content for the right column can be added here -->
-                <canvas class="drop-shadow" #memeCanvas width="700" height="800" 
-                style="background-color: #f9f9fd;"></canvas>
+                <canvas class="drop-shadow" #memeCanvas width="700" height="800" style="background-color: #f9f9fd;"></canvas>
             </div>
         </div>
     </div>
